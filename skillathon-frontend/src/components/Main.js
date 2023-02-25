@@ -1,3 +1,4 @@
+import { LinkedinFilled } from '@ant-design/icons';
 import { Layout } from 'antd';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './Main.css';
@@ -11,7 +12,10 @@ const Main = () => {
   return (
     <Layout className="main">
       <Header className="header">
-        <div className="logo" />
+        <div className="header-title">
+          <LinkedinFilled />
+          Skill-a-thon
+        </div>
       </Header>
       <Layout>
         <SideNav />
