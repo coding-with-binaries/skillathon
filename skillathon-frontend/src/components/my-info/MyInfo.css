@@ -1,0 +1,11 @@
+.my-info {
+  padding: 24px;
+  width: 100%;
+}
+
+.my-basic-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
