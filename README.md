@@ -43,7 +43,7 @@ Move into folder skillathon-frontend
 
 **Setting up the backend**
 
-Run npm install
+Run `npm install`
 
 **Build the app**
 
