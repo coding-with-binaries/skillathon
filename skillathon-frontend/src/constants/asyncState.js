@@ -5,7 +5,9 @@ export const ASYNC_STATE = {
   FAILED: 3,
 };
 
-export const isLoading = state =>
+export const isInitializing = state =>
   [ASYNC_STATE.NOT_STARTED, ASYNC_STATE.IN_PROGRESS].includes(state);
 
+export const isLoading = state => state === ASYNC_STATE.IN_PROGRESS;
+export const isSuccess = state => state === ASYNC_STATE.SUCCESS;
 export const isFailed = state => state === ASYNC_STATE.FAILED;

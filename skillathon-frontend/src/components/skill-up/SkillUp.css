@@ -1,0 +1,14 @@
+.skill-up {
+  padding: 24px;
+  width: 100%;
+}
+
+.requirement-partition {
+  display: grid;
+  grid-template-columns: 5fr 2fr 5fr;
+  gap: 20px
+}
+
+.submit-requirement {
+  align-self: center;
+}

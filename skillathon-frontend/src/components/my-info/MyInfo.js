@@ -2,7 +2,11 @@ import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Typography } from 'antd';
 import { useCallback, useEffect, useState } from 'react';
 import { ProfileApi } from '../../api/Profile';
-import { ASYNC_STATE, isFailed, isLoading } from '../../constants/asyncState';
+import {
+  ASYNC_STATE,
+  isFailed,
+  isInitializing,
+} from '../../constants/asyncState';
 import FullLoader from '../common/loader/FullLoader';
 import './MyInfo.css';
 
@@ -40,7 +44,7 @@ const MyInfo = () => {
 
   return (
     <div className="my-info">
-      {isLoading(state) ? (
+      {isInitializing(state) ? (
         <FullLoader message="Fetching user profile information. Please wait..." />
       ) : isFailed(state) ? (
         <p>Failed</p>
