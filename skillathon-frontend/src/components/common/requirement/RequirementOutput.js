@@ -1,8 +1,27 @@
-const RequirementOutput = ({ text, requirement }) => {
+import { PauseOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { isNarrationRequirement } from '../../../constants/requirement';
+import './RequirementOutput.css';
+
+const RequirementOutput = ({ text, requirement, stopSpeaking }) => {
   return (
     <div>
       <p className="requirement-output-title">Output</p>
-      <div className="requirement-output">{text}</div>
+      {isNarrationRequirement(requirement) ? (
+        <div className="requirement-output-voice">
+          <div className="requirement-voice-toolbar">
+            <Button
+              type="text"
+              shape="circle"
+              icon={<PauseOutlined />}
+              size="large"
+              onClick={stopSpeaking}
+            />
+          </div>
+        </div>
+      ) : (
+        <div className="requirement-output-text">{text}</div>
+      )}
     </div>
   );
 };

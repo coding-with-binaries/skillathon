@@ -47,14 +47,28 @@ export const REQUIREMENTS_LABEL_MAP = REQUIREMENTS.reduce((acc, req) => {
 }, {});
 
 export const isTranslationRequirement = requirement =>
-  [REQUIREMENT.TRANSLATE, REQUIREMENT.SUMMARIZE_AND_TRANSLATE].includes(
-    requirement
-  );
+  [
+    REQUIREMENT.TRANSLATE,
+    REQUIREMENT.SUMMARIZE_AND_TRANSLATE,
+    REQUIREMENT.TRANSLATE_AND_NARRATE,
+    REQUIREMENT.SUMMARIZE_TRANSLATE_AND_NARRATE,
+  ].includes(requirement);
 
 export const isSummarizationRequirement = requirement =>
-  [REQUIREMENT.SUMMARIZE, REQUIREMENT.SUMMARIZE_AND_TRANSLATE].includes(
-    requirement
-  );
+  [
+    REQUIREMENT.SUMMARIZE,
+    REQUIREMENT.SUMMARIZE_AND_TRANSLATE,
+    REQUIREMENT.SUMMARIZE_AND_NARRATE,
+    REQUIREMENT.SUMMARIZE_TRANSLATE_AND_NARRATE,
+  ].includes(requirement);
+
+export const isNarrationRequirement = requirement =>
+  [
+    REQUIREMENT.NARRATE,
+    REQUIREMENT.SUMMARIZE_AND_NARRATE,
+    REQUIREMENT.TRANSLATE_AND_NARRATE,
+    REQUIREMENT.SUMMARIZE_TRANSLATE_AND_NARRATE,
+  ].includes(requirement);
 
 export const LOCALES = [
   {

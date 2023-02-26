@@ -2,10 +2,11 @@ import { EllipsisOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Modal, Typography } from 'antd';
 import { useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSpeechSynthesis } from 'react-speech-kit';
 import { isLoading } from '../../constants/asyncState';
 import { ARTICLES, POPULAR_ARTICLES } from '../../constants/feed';
 import {
-  REQUIREMENT,
+  isNarrationRequirement,
   REQUIREMENTS,
   REQUIREMENTS_LABEL_MAP,
 } from '../../constants/requirement';
@@ -38,27 +39,31 @@ const Article = () => {
   };
 
   const [locale, setLocale] = useState();
+  const [voiceIndex, setVoiceIndex] = useState();
   const [lines, setLines] = useState(5);
 
   const onChangeLines = value => setLines(value);
+  const onChangeVoiceIndex = value => setVoiceIndex(value);
   const onChangeLocale = value => setLocale(value);
 
   const onContentProcessSuccess = useCallback(() => {
-    if (requirement !== REQUIREMENT.NARRATE) {
+    if (!isNarrationRequirement(requirement)) {
       setModalVisible(false);
     }
   }, [requirement]);
 
+  const { voices: supportedVoices } = useSpeechSynthesis();
   const options = {
     lines,
     locale,
+    voice: supportedVoices[voiceIndex],
     onSuccess: onContentProcessSuccess,
   };
   const { state, convertedText, processContent, resetContent, stopSpeaking } =
     useContentProcessing(requirement, article.content, options);
 
   const onCloseModal = () => {
-    if (requirement === REQUIREMENT.NARRATE) {
+    if (isNarrationRequirement(requirement)) {
       stopSpeaking();
     }
     setModalVisible(false);
@@ -120,12 +125,15 @@ const Article = () => {
         ]}
       >
         <RequirementInputs
+          supportedVoices={supportedVoices}
           requirement={requirement}
           loading={loading}
           lines={lines}
           onChangeLines={onChangeLines}
           locale={locale}
           onChangeLocale={onChangeLocale}
+          voiceIndex={voiceIndex}
+          onChangeVoiceIndex={onChangeVoiceIndex}
           skipText
         />
       </Modal>

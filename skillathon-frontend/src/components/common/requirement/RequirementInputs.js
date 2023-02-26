@@ -1,5 +1,6 @@
 import { Input, InputNumber, Select } from 'antd';
 import {
+  isNarrationRequirement,
   isSummarizationRequirement,
   isTranslationRequirement,
   LOCALES,
@@ -13,10 +14,18 @@ const RequirementInputs = ({
   onChangeLocale,
   lines,
   onChangeLines,
+  voiceIndex,
+  supportedVoices,
+  onChangeVoiceIndex,
   text,
   onChangeText,
   skipText = false,
 }) => {
+  const voices = supportedVoices?.map((supportedVoice, index) => ({
+    label: `${supportedVoice.lang} - ${supportedVoice.name}`,
+    value: index,
+  }));
+
   return (
     <div>
       {isTranslationRequirement(requirement) && (
@@ -44,6 +53,21 @@ const RequirementInputs = ({
             disabled={loading}
           />{' '}
           lines
+        </div>
+      )}
+      {isNarrationRequirement(requirement) && (
+        <div>
+          <Select
+            style={{
+              width: 240,
+              marginBottom: 12,
+            }}
+            value={voiceIndex}
+            placeholder="Select narration voice"
+            onChange={onChangeVoiceIndex}
+            options={voices}
+            disabled={loading}
+          />
         </div>
       )}
       {!skipText && (
