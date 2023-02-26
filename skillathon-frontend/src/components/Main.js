@@ -15,7 +15,7 @@ const Main = () => {
       <Header className="header">
         <div className="header-title">
           <img src="/logo.png" alt="" style={{ height: 48 }} />
-          <span className="header-title-main">Skill-a-thon</span>| Celebrating
+          <span className="header-title-main">LearnUp</span>| Celebrating
           Differentiability
         </div>
       </Header>
