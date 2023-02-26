@@ -1,15 +1,15 @@
 import { EllipsisOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Modal, Typography } from 'antd';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ContentApi } from '../../api/Content';
-import { ASYNC_STATE, isLoading } from '../../constants/asyncState';
+import { isLoading } from '../../constants/asyncState';
 import { ARTICLES, POPULAR_ARTICLES } from '../../constants/feed';
 import {
   REQUIREMENT,
   REQUIREMENTS,
   REQUIREMENTS_LABEL_MAP,
 } from '../../constants/requirement';
+import { useContentProcessing } from '../../hooks';
 import { RequirementInputs } from '../common/requirement';
 import './Article.css';
 
@@ -29,8 +29,6 @@ const Article = () => {
     setModalVisible(true);
   };
 
-  const onCloseModal = () => setModalVisible(false);
-
   const menuProps = {
     items: REQUIREMENTS.map(requirement => ({
       key: requirement.value,
@@ -45,40 +43,28 @@ const Article = () => {
   const onChangeLines = value => setLines(value);
   const onChangeLocale = value => setLocale(value);
 
-  const [state, setState] = useState(ASYNC_STATE.NOT_STARTED);
-  const [convertedText, setConvertedText] = useState(null);
-
-  const onClickBackToOriginal = () => setConvertedText(null);
-
-  const onClickProcess = async () => {
-    try {
-      setState(ASYNC_STATE.IN_PROGRESS);
-      if (requirement === REQUIREMENT.SUMMARIZE) {
-        const output = await ContentApi.summarizeContent(
-          article.content,
-          lines
-        );
-        setConvertedText(output);
-      } else if (requirement === REQUIREMENT.TRANSLATE) {
-        const output = await ContentApi.translateContent(
-          article.content,
-          locale
-        );
-        setConvertedText(output);
-      } else if (requirement === REQUIREMENT.SUMMARIZE_AND_TRANSLATE) {
-        const output = await ContentApi.summarizeAndTranslateContent(
-          article.content,
-          locale,
-          lines
-        );
-        setConvertedText(output);
-      }
-      setState(ASYNC_STATE.SUCCESS);
+  const onContentProcessSuccess = useCallback(() => {
+    if (requirement !== REQUIREMENT.NARRATE) {
       setModalVisible(false);
-    } catch {
-      setState(ASYNC_STATE.FAILED);
     }
+  }, [requirement]);
+
+  const options = {
+    lines,
+    locale,
+    onSuccess: onContentProcessSuccess,
   };
+  const { state, convertedText, processContent, resetContent, stopSpeaking } =
+    useContentProcessing(requirement, article.content, options);
+
+  const onCloseModal = () => {
+    if (requirement === REQUIREMENT.NARRATE) {
+      stopSpeaking();
+    }
+    setModalVisible(false);
+  };
+
+  const onClickBackToOriginal = () => resetContent();
 
   const loading = isLoading(state);
 
@@ -116,18 +102,18 @@ const Article = () => {
         </div>
       </div>
       <Modal
-        title="Select options"
+        title={REQUIREMENTS_LABEL_MAP[requirement]}
         open={modalVisible}
         onCancel={onCloseModal}
         footer={[
           <Button key="back" onClick={onCloseModal}>
-            Return
+            Close
           </Button>,
           <Button
             key="submit"
             type="primary"
             loading={loading}
-            onClick={onClickProcess}
+            onClick={processContent}
           >
             {REQUIREMENTS_LABEL_MAP[requirement]}
           </Button>,
