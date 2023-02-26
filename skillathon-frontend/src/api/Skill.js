@@ -9,12 +9,12 @@ const SUMMARIZE_AND_TRANSLATE_URL = '/summarize_and_translate';
 export class SkillApi {
   static async translateContent(text, locale) {
     const res = await axios.post(TRANSLATE_URL, { text, to: locale });
-    return res.data;
+    return res.data.translated;
   }
 
   static async summarizeContent(text, lines) {
     const res = await axios.post(SUMMARIZE_URL, { text, lines });
-    return res.data;
+    return res.data.summary;
   }
 
   static async summarizeAndTranslateContent(text, locale, lines) {
@@ -23,6 +23,6 @@ export class SkillApi {
       to: locale,
       lines,
     });
-    return res.data;
+    return res.data.translated_summary;
   }
 }
