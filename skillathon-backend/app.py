@@ -14,7 +14,7 @@ db.init_app(app)
 def create_table():
     db.create_all()
 
-@app.route('/translate', methods=['POST'])
+@app.route('/content/translate', methods=['POST'])
 def translate_api():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
@@ -37,7 +37,7 @@ def translate_api():
         return 'Content-Type not supported!'
 
 
-@app.route('/summarize', methods=['POST'])
+@app.route('/content/summarize', methods=['POST'])
 def summarize_api():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
@@ -62,7 +62,7 @@ def summarize_api():
 
 
 
-@app.route('/summarize_and_translate', methods=['POST'])
+@app.route('/content/summarize-and-translate', methods=['POST'])
 def summarize_and_translate_api():
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
@@ -87,7 +87,7 @@ def summarize_and_translate_api():
         return 'Content-Type not supported!'
 
 
-@app.route('/user/create' , methods = ['POST'])
+@app.route('/users' , methods = ['POST'])
 def create_user():
 
     content_type = request.headers.get('Content-Type')
@@ -113,14 +113,14 @@ def create_user():
         return 'Content-Type not supported!'
 
 
-@app.route('/user/all')
+@app.route('/users')
 def RetrieveUserDataList():
     users = UserModel.query.all()
     response = Response(str(users),content_type="application/json; charset=utf-8" )
     return response
 
 
-@app.route('/user/<int:id>')
+@app.route('/users/<int:id>')
 def RetrieveSingleUser(id):
     user = UserModel.query.filter_by(user_id=id).first()
     if user:
@@ -129,7 +129,7 @@ def RetrieveSingleUser(id):
     return Response('User with given id not found.', status=404)
 
 
-@app.route('/user/<int:id>',methods = ['PATCH'])
+@app.route('/users/<int:id>',methods = ['PATCH'])
 def updateUser(id):
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
@@ -153,7 +153,7 @@ def updateUser(id):
         return 'Content-Type not supported!'
 
 
-@app.route('/user/<int:id>', methods=['DELETE'])
+@app.route('/users/<int:id>', methods=['DELETE'])
 def deleteUser(id):
     user = UserModel.query.filter_by(user_id=id).first()
     if request.method == 'DELETE':
@@ -169,7 +169,7 @@ def deleteUser(id):
 
 
 
-@app.route('/article/create' , methods = ['POST'])
+@app.route('/articles' , methods = ['POST'])
 def createArticle():
 
     content_type = request.headers.get('Content-Type')
@@ -191,14 +191,14 @@ def createArticle():
         return 'Content-Type not supported!'
 
 
-@app.route('/article/all')
+@app.route('/articles')
 def RetrieveArticleDataList():
     articles = ArticleModel.query.all()
     response = Response(str(articles),content_type="application/json; charset=utf-8" )
     return response
 
 
-@app.route('/article/<int:id>')
+@app.route('/articles/<int:id>')
 def RetrieveSingleArticle(id):
     article = ArticleModel.query.filter_by(article_id=id).first()
     if article:
@@ -207,7 +207,7 @@ def RetrieveSingleArticle(id):
     return Response('Article with given id not found.', status=404)
 
 
-@app.route('/article/<int:id>',methods = ['PATCH'])
+@app.route('/articles/<int:id>',methods = ['PATCH'])
 def updateArticle(id):
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
@@ -227,7 +227,7 @@ def updateArticle(id):
         return 'Content-Type not supported!'
 
 
-@app.route('/article/<int:id>', methods=['DELETE'])
+@app.route('/articles/<int:id>', methods=['DELETE'])
 def deleteArticle(id):
     article = ArticleModel.query.filter_by(article_id=id).first()
     if request.method == 'DELETE':

@@ -1,6 +1,6 @@
 import { Button, Input, InputNumber, Select, Typography } from 'antd';
 import { useState } from 'react';
-import { SkillApi } from '../../api/Skill';
+import { ContentApi } from '../../api/Content';
 import { ASYNC_STATE, isLoading, isSuccess } from '../../constants/asyncState';
 import {
   isSummarizationRequirement,
@@ -86,13 +86,13 @@ const Requirement = ({ requirement }) => {
     try {
       setState(ASYNC_STATE.IN_PROGRESS);
       if (requirement === REQUIREMENT.SUMMARIZE) {
-        const output = await SkillApi.summarizeContent(text, lines);
+        const output = await ContentApi.summarizeContent(text, lines);
         setConvertedText(output);
       } else if (requirement === REQUIREMENT.TRANSLATE) {
-        const output = await SkillApi.translateContent(text, locale);
+        const output = await ContentApi.translateContent(text, locale);
         setConvertedText(output);
       } else if (requirement === REQUIREMENT.SUMMARIZE_AND_TRANSLATE) {
-        const output = await SkillApi.summarizeAndTranslateContent(
+        const output = await ContentApi.summarizeAndTranslateContent(
           text,
           locale,
           lines

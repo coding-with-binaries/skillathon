@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const TRANSLATE_URL = '/translate';
+const BASE_URL = '/content';
 
-const SUMMARIZE_URL = '/summarize';
+const TRANSLATE_URL = `${BASE_URL}/translate`;
+const SUMMARIZE_URL = `${BASE_URL}/summarize`;
+const SUMMARIZE_AND_TRANSLATE_URL = `${BASE_URL}/summarize-and-translate`;
 
-const SUMMARIZE_AND_TRANSLATE_URL = '/summarize_and_translate';
-
-export class SkillApi {
+export class ContentApi {
   static async translateContent(text, locale) {
     const res = await axios.post(TRANSLATE_URL, { text, to: locale });
     return res.data.translated;
