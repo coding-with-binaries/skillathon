@@ -26,6 +26,8 @@ function useContentProcessing(requirement, text, options) {
       } else if (requirement === REQUIREMENT.TRANSLATE) {
         const output = await ContentApi.translateContent(text, locale);
         setConvertedText(output);
+      } else if (requirement === REQUIREMENT.NARRATE) {
+        speak({ text, voice });
       } else if (requirement === REQUIREMENT.SUMMARIZE_AND_TRANSLATE) {
         const output = await ContentApi.summarizeAndTranslateContent(
           text,
@@ -33,8 +35,14 @@ function useContentProcessing(requirement, text, options) {
           lines
         );
         setConvertedText(output);
-      } else if (requirement === REQUIREMENT.NARRATE) {
-        speak({ text, voice });
+      } else if (requirement === REQUIREMENT.SUMMARIZE_AND_NARRATE) {
+        const output = await ContentApi.summarizeContent(text, lines);
+        setConvertedText(output);
+        speak({ text: output, voice });
+      } else if (requirement === REQUIREMENT.TRANSLATE_AND_NARRATE) {
+        const output = await ContentApi.translateContent(text, locale);
+        setConvertedText(output);
+        speak({ text: output, voice });
       } else if (requirement === REQUIREMENT.SUMMARIZE_TRANSLATE_AND_NARRATE) {
         const output = await ContentApi.summarizeAndTranslateContent(
           text,

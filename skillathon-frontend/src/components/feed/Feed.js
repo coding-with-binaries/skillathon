@@ -40,7 +40,7 @@ const Feed = () => {
           </Card>
         ))}
       </div>
-      <Title level={3}>Popular on Skill-a-thon</Title>
+      <Title level={3}>Popular on LearnUp</Title>
       <div className="top-articles">
         {POPULAR_ARTICLES.map(article => (
           <Card
