@@ -62,7 +62,12 @@ const RequirementInputs = ({
 };
 
 const RequirementOutput = ({ text }) => {
-  return <div>{text}</div>;
+  return (
+    <div>
+      <p className="requirement-output-title">Converted Text</p>
+      <div className="requirement-output">{text}</div>
+    </div>
+  );
 };
 
 const Requirement = ({ requirement }) => {
@@ -123,7 +128,7 @@ const Requirement = ({ requirement }) => {
           onClick={onClickSubmit}
           loading={loading}
         >
-          Submit
+          {'>>>'}
         </Button>
         {success && <RequirementOutput text={convertedText} />}
       </div>
