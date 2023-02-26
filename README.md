@@ -26,6 +26,7 @@
 **Running the app**
 
 Run the app using Flask:
+Move into folder skillathon-backend
 `python3 app.py`
 
 Sample API calls for Users and Articles CRUD can be found here : [Documentation Collection](https://documenter.getpostman.com/view/7484288/2s93CPqsDv)
@@ -37,6 +38,12 @@ Sample API calls for Translations & Summarizations can be found here : [Document
 
 
 ## Setting up the frontend
+
+Move into folder skillathon-frontend
+
+**Setting up the backend**
+
+Run npm install
 
 **Build the app**
 
