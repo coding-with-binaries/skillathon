@@ -1,10 +1,11 @@
 import { LinkedinFilled } from '@ant-design/icons';
 import { Layout } from 'antd';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import Content from './content/Content';
+import Feed from './feed/Feed';
 import './Main.css';
 import MyInfo from './my-info/MyInfo';
 import SideNav from './side-nav/SideNav';
-import SkillUp from './skill-up/SkillUp';
 
 const { Header } = Layout;
 
@@ -20,9 +21,10 @@ const Main = () => {
       <Layout>
         <SideNav />
         <Routes>
+          <Route path="/feed" element={<Feed />} />
           <Route path="/my-info" element={<MyInfo />} />
-          <Route path="/skill-up" element={<SkillUp />} />
-          <Route path="/" element={<Navigate to="/my-info" />} />
+          <Route path="/content" element={<Content />} />
+          <Route path="/" element={<Navigate to="/feed" />} />
         </Routes>
       </Layout>
     </Layout>

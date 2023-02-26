@@ -1,10 +1,10 @@
 import { Select } from 'antd';
 import { useState } from 'react';
 import { REQUIREMENTS } from '../../constants/requirement';
+import './Content.css';
 import Requirement from './Requirement';
-import './SkillUp.css';
 
-const SkillUp = () => {
+const Content = () => {
   const [requirement, setRequirement] = useState(null);
 
   const onChange = value => {
@@ -12,7 +12,7 @@ const SkillUp = () => {
   };
 
   return (
-    <div className="skill-up">
+    <div className="content">
       <Select
         style={{
           width: 240,
@@ -27,4 +27,4 @@ const SkillUp = () => {
   );
 };
 
-export default SkillUp;
+export default Content;

@@ -1,0 +1,10 @@
+.feed {
+  padding: 24px;
+  width: 100%;
+}
+
+.top-articles {
+  display: grid;
+  grid-template-columns: repeat( auto-fill, 300px );
+  gap: 24px
+}
