@@ -3,11 +3,12 @@ export class ProfileApi {
     return new Promise(resolve => {
       setTimeout(() => {
         return resolve({
-          name: 'Varun',
+          name: 'Varun Sharma',
           id: 1,
-          skills: ['java', 'js', 'react'],
+          skills: ['Java', 'JavaScript', 'React'],
+          requiredSkills: ['Artificial Intelligence'],
         });
-      }, 5000);
+      }, 2000);
     });
   }
 }

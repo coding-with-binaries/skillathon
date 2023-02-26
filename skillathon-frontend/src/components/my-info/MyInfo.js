@@ -1,5 +1,5 @@
 import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Typography } from 'antd';
+import { Avatar, Tag, Typography } from 'antd';
 import { useCallback, useEffect, useState } from 'react';
 import { ProfileApi } from '../../api/Profile';
 import {
@@ -12,11 +12,50 @@ import './MyInfo.css';
 
 const { Title } = Typography;
 
+const colors = [
+  'magenta',
+  'red',
+  'volcano',
+  'orange',
+  'gold',
+  'lime',
+  'green',
+  'cyan',
+  'blue',
+  'geekblue',
+  'purple',
+];
+
+const getRandomColor = () => {
+  const randomIndex = Math.floor(Math.random() * colors.length);
+
+  return colors[randomIndex];
+};
+
 const MyBasicInfo = ({ name }) => {
   return (
     <div className="my-basic-info">
       <Avatar size={128} icon={<UserOutlined />} />
       <Title level={3}>{name}</Title>
+    </div>
+  );
+};
+
+const MySkills = ({ skills, requiredSkills }) => {
+  return (
+    <div>
+      <div className="skills-i-have">
+        <strong style={{ marginRight: 8 }}>Skills I have:</strong>
+        {skills?.map(skill => (
+          <Tag color={getRandomColor()}>{skill}</Tag>
+        ))}
+      </div>
+      <div className="skills-i-want">
+        <strong style={{ marginRight: 8 }}>Skills I want:</strong>
+        {requiredSkills?.map(skill => (
+          <Tag color={getRandomColor()}>{skill}</Tag>
+        ))}
+      </div>
     </div>
   );
 };
@@ -49,7 +88,15 @@ const MyInfo = () => {
       ) : isFailed(state) ? (
         <p>Failed</p>
       ) : (
-        profileData && <MyBasicInfo name={profileData.name} />
+        profileData && (
+          <>
+            <MyBasicInfo name={profileData.name} />
+            <MySkills
+              skills={profileData.skills}
+              requiredSkills={profileData.requiredSkills}
+            />
+          </>
+        )
       )}
     </div>
   );
