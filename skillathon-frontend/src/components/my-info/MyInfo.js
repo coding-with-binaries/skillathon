@@ -1,4 +1,3 @@
-import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Tag, Typography } from 'antd';
 import { useCallback, useEffect, useState } from 'react';
 import { ProfileApi } from '../../api/Profile';
@@ -35,7 +34,7 @@ const getRandomColor = () => {
 const MyBasicInfo = ({ name }) => {
   return (
     <div className="my-basic-info">
-      <Avatar size={128} icon={<UserOutlined />} />
+      <Avatar size={128} src="https://joesch.moe/api/v1/random" />
       <Title level={3}>{name}</Title>
     </div>
   );

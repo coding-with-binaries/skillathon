@@ -1,4 +1,3 @@
-import { LinkedinFilled } from '@ant-design/icons';
 import { Layout } from 'antd';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Article from './article/Article';
@@ -15,19 +14,20 @@ const Main = () => {
     <Layout className="main">
       <Header className="header">
         <div className="header-title">
-          <LinkedinFilled />
-          Skill-a-thon
+          <img src="/logo.png" alt="" style={{ height: 48 }} />
+          <span className="header-title-main">Skill-a-thon</span>| Celebrating
+          Differentiability
         </div>
       </Header>
       <Layout>
         <SideNav />
         <div className="main-core">
           <Routes>
-            <Route path="/feed" element={<Feed />} />
+            <Route path="/learn" element={<Feed />} />
             <Route path="/my-info" element={<MyInfo />} />
-            <Route path="/content" element={<Content />} />
+            <Route path="/magic-tools" element={<Content />} />
             <Route path="/articles/:id" element={<Article />} />
-            <Route path="*" element={<Navigate to="/feed" />} />
+            <Route path="*" element={<Navigate to="/learn" />} />
           </Routes>
         </div>
       </Layout>

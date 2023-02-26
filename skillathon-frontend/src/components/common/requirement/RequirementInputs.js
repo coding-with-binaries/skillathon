@@ -36,12 +36,14 @@ const RequirementInputs = ({
       )}
       {isSummarizationRequirement(requirement) && (
         <div>
+          Create short summary of{' '}
           <InputNumber
             style={{ marginBottom: 12 }}
             value={lines}
             onChange={onChangeLines}
             disabled={loading}
-          />
+          />{' '}
+          lines
         </div>
       )}
       {!skipText && (

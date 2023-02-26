@@ -30,6 +30,6 @@
 
 .article-content-body {
   margin-top: 24px;
-
   font-size: 24px;
+  white-space: pre-line;
 }

@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 
 const SideNavItems = [
   {
-    label: <Link to="/feed">Learn</Link>,
+    label: <Link to="/learn">Learn</Link>,
     key: 'feed',
     icon: <HomeOutlined />,
   },
   {
-    label: <Link to="/content">Content</Link>,
+    label: <Link to="/magic-tools">Magic Tools</Link>,
     key: 'content',
     icon: <LaptopOutlined />,
   },

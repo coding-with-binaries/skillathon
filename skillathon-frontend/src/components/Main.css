@@ -2,10 +2,20 @@
   height: 100vh;
 }
 
+.header.ant-layout-header {
+  background: #19425a;
+}
+
 .header-title {
   color: white;
+  display: flex;
+  align-items: center;
+}
+
+.header-title-main {
   font-size: larger;
   font-weight: 800;
+  margin-right: 8px;
 }
 
 .main-core {

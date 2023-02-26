@@ -4,8 +4,12 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ContentApi } from '../../api/Content';
 import { ASYNC_STATE, isLoading } from '../../constants/asyncState';
-import { ARTICLES } from '../../constants/feed';
-import { REQUIREMENT, REQUIREMENTS } from '../../constants/requirement';
+import { ARTICLES, POPULAR_ARTICLES } from '../../constants/feed';
+import {
+  REQUIREMENT,
+  REQUIREMENTS,
+  REQUIREMENTS_LABEL_MAP,
+} from '../../constants/requirement';
 import { RequirementInputs } from '../common/requirement';
 import './Article.css';
 
@@ -13,7 +17,9 @@ const { Title } = Typography;
 const Article = () => {
   const { id } = useParams();
 
-  const article = ARTICLES.find(article => article.id === Number(id));
+  const article = [...ARTICLES, ...POPULAR_ARTICLES].find(
+    article => article.id === Number(id)
+  );
 
   const [requirement, setRequirement] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -123,7 +129,7 @@ const Article = () => {
             loading={loading}
             onClick={onClickProcess}
           >
-            Process
+            {REQUIREMENTS_LABEL_MAP[requirement]}
           </Button>,
         ]}
       >
