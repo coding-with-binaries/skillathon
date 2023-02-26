@@ -23,8 +23,10 @@
 Run the app using Flask:
 `python3 app.py`
 
+Sample API calls for Users and Articles CRUD can be found here : [Documentation Collection](https://documenter.getpostman.com/view/7484288/2s93CPqsDv)
 
-Sample API calls can be found here : [Documentation Collection](https://documenter.getpostman.com/view/26052824/2s93CPqCVN)
+
+Sample API calls for Translations & Summarizations can be found here : [Documentation Collection](https://documenter.getpostman.com/view/26052824/2s93CPqCVN)
 
 
 
