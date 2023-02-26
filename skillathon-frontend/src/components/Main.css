@@ -7,3 +7,10 @@
   font-size: larger;
   font-weight: 800;
 }
+
+.main-core {
+  padding: 24px;
+  width: 100%;
+
+  overflow: auto;
+}

@@ -1,65 +1,14 @@
-import { Button, Input, InputNumber, Select, Typography } from 'antd';
+import { Button, Typography } from 'antd';
 import { useState } from 'react';
 import { ContentApi } from '../../api/Content';
 import { ASYNC_STATE, isLoading, isSuccess } from '../../constants/asyncState';
 import {
-  isSummarizationRequirement,
-  isTranslationRequirement,
-  LOCALES,
   REQUIREMENT,
   REQUIREMENTS_LABEL_MAP,
 } from '../../constants/requirement';
+import { RequirementInputs } from '../common/requirement';
 
 const { Title } = Typography;
-const { TextArea } = Input;
-
-const RequirementInputs = ({
-  requirement,
-  loading,
-  locale,
-  onChangeLocale,
-  lines,
-  onChangeLines,
-  text,
-  onChangeText,
-}) => {
-  return (
-    <div>
-      {isTranslationRequirement(requirement) && (
-        <div>
-          <Select
-            style={{
-              width: 240,
-              marginBottom: 12,
-            }}
-            value={locale}
-            placeholder="Select translation language"
-            onChange={onChangeLocale}
-            options={LOCALES}
-            disabled={loading}
-          />
-        </div>
-      )}
-      {isSummarizationRequirement(requirement) && (
-        <div>
-          <InputNumber
-            style={{ marginBottom: 12 }}
-            value={lines}
-            onChange={onChangeLines}
-            disabled={loading}
-          />
-        </div>
-      )}
-      <TextArea
-        placeholder="Enter text"
-        rows={25}
-        value={text}
-        onChange={onChangeText}
-        disabled={loading}
-      />
-    </div>
-  );
-};
 
 const RequirementOutput = ({ text }) => {
   return (

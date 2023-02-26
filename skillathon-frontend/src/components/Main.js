@@ -1,6 +1,7 @@
 import { LinkedinFilled } from '@ant-design/icons';
 import { Layout } from 'antd';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import Article from './article/Article';
 import Content from './content/Content';
 import Feed from './feed/Feed';
 import './Main.css';
@@ -20,12 +21,15 @@ const Main = () => {
       </Header>
       <Layout>
         <SideNav />
-        <Routes>
-          <Route path="/feed" element={<Feed />} />
-          <Route path="/my-info" element={<MyInfo />} />
-          <Route path="/content" element={<Content />} />
-          <Route path="/" element={<Navigate to="/feed" />} />
-        </Routes>
+        <div className="main-core">
+          <Routes>
+            <Route path="/feed" element={<Feed />} />
+            <Route path="/my-info" element={<MyInfo />} />
+            <Route path="/content" element={<Content />} />
+            <Route path="/articles/:id" element={<Article />} />
+            <Route path="*" element={<Navigate to="/feed" />} />
+          </Routes>
+        </div>
       </Layout>
     </Layout>
   );
