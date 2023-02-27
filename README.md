@@ -1,6 +1,6 @@
 
-# Celebrating Differentiability
-"Celebrating Differentiability" is an innovative tool designed to bridge the gap between differently-abled individuals and technology. Our goal is to create a more inclusive world where everyone has equal access to information and opportunities, regardless of their abilities. To achieve this, we have created a versatile tool that offers multiple features to cater to the needs and preferences of the consumers.
+# LearnUp
+"LearnUp" is an innovative tool designed to bridge the gap between differently-abled individuals and technology. Our goal is to create a more inclusive world where everyone has equal access to information and opportunities, regardless of their abilities. To achieve this, we have created a versatile tool that offers multiple features to cater to the needs and preferences of the consumers.
 
 ## Setting up the backend
 **Install Python:**
