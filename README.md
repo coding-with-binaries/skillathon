@@ -2,7 +2,9 @@
 # LearnUp
 "LearnUp" is an innovative tool designed to bridge the gap between differently-abled individuals and technology. Our goal is to create a more inclusive world where everyone has equal access to information and opportunities, regardless of their abilities. To achieve this, we have created a versatile tool that offers multiple features to cater to the needs and preferences of the consumers.
 
-## Setting up the backend
+## Code Setup
+
+### Setting up the backend
 **Install Python:**
 
 `brew install python3`
@@ -37,7 +39,7 @@ Sample API calls for Translations & Summarizations can be found here : [Document
 
 
 
-## Setting up the frontend
+### Setting up the frontend
 
 Move into folder skillathon-frontend
 
@@ -70,3 +72,10 @@ Run `yarn test` to launch the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 
+## Supporting Resources
+
+[Product Document] (https://docs.google.com/document/d/1KBTWLD7Bi8MPWg4ZM1M03uwtefC_dl2DFBj7OjbVhos/edit#heading=h.uqotn8z6ewfu)
+
+[PPT] (https://docs.google.com/presentation/d/1a32S1L2tyMPSHrDJNq1Z00asqt0rHLui-ttmku0eOss/edit#slide=id.p)
+
+[Link to Video] (https://drive.google.com/file/d/1gYbh6Yq7-BsAzn4FbiY-400Wduw4vwQR/view?usp=sharing)
