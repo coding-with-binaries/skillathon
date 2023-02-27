@@ -74,8 +74,8 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## Supporting Resources
 
-[Product Document] (https://docs.google.com/document/d/1KBTWLD7Bi8MPWg4ZM1M03uwtefC_dl2DFBj7OjbVhos/edit#heading=h.uqotn8z6ewfu)
+[Product Document](https://docs.google.com/document/d/1KBTWLD7Bi8MPWg4ZM1M03uwtefC_dl2DFBj7OjbVhos/edit#heading=h.uqotn8z6ewfu)
 
-[PPT] (https://docs.google.com/presentation/d/1a32S1L2tyMPSHrDJNq1Z00asqt0rHLui-ttmku0eOss/edit#slide=id.p)
+[PPT](https://docs.google.com/presentation/d/1a32S1L2tyMPSHrDJNq1Z00asqt0rHLui-ttmku0eOss/edit#slide=id.p)
 
-[Link to Video] (https://drive.google.com/file/d/1gYbh6Yq7-BsAzn4FbiY-400Wduw4vwQR/view?usp=sharing)
+[Link to Video](https://drive.google.com/file/d/1gYbh6Yq7-BsAzn4FbiY-400Wduw4vwQR/view?usp=sharing)
