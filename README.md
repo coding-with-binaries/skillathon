@@ -43,9 +43,12 @@ Sample API calls for Translations & Summarizations can be found here : [Document
 
 Move into folder skillathon-frontend
 
-**Setting up the backend**
+**Pre-requisites**
+Make sure that you have `node` and `yarn` installed.
 
-Run `npm install`
+**Setting up the frontend application**
+
+Run `yarn install`
 
 **Build the app**
 
